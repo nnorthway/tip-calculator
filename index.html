@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href='styles/index.css' type='text/css' rel='stylesheet' />
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <h1 id='title'>SPLI<br />TTER</h1>
+  <form id='app'>
+    <div class='row collapse'>
+      <div class='column is-half'>
+        <div class='container'>
+          <div class='row'>
+            <div class='field'>
+              <label for='bill'>Bill<span id='bill_msg' aria-live='polite'></span></label>
+              <input name='bill' type='number' min='.01' step='.01' id='bill' required />
+            </div>
+          </div>
+          <div class='row'>
+            <div class='column is-full'>
+              <p class='label'>
+                Select Tip %<span id='tip_msg'></span>
+              </p>
+            </div>
+            <div class='tip_buttons column is-full'>
+              <button aria-label='tip 5%' class='tip' value='5'>5%</button>
+              <button aria-label='tip 10%' class='tip' value='10'>10%</button>
+              <button aria-label='tip 15%' class='tip' value='15'>15%</button>
+              <button aria-label='tip 25%' class='tip' value='25'>25%</button>
+              <button aria-label='tip 50%' class='tip' value='50'>50%</button>
+              <div class='field'>
+                <label for='custom_tip' class='hidden'>Custom Tip Amount</label>
+                <input type='number' name='custom_tip' min='0' step='1' placeholder='Custom' />
+              </div>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='field'>
+              <label for='people'>Number of People<span id='split_msg' aria-live='polite'></span></label>
+              <input type='number' name='people' placeholder='1' value='1' min='1' step='1' id='people' required />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='column is-half' id='result'>
+        <div class='container'>
+          <div class='row'>
+            <div class='column'>
+              <p>
+                Tip Amount<br />
+                <small>/ person</small>
+              </p>
+            </div>
+            <div class='column'>
+              <h1 id='each_tip'>$0.00</h1>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='column'>
+              <p>
+                Total<br />
+                <small>/ person</small>
+              </p>
+            </div>
+            <div class='column'>
+              <h1 id='each_total'>$0.00</h1>
+            </div>
+          </div>
+          <div class='row' id='reset_row'>
+            <button id='reset' class='inactive'>RESET</button>
+            <div id='hint_text' class='hidden' aria-live='polite'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script type='text/javascript' src='script.js'></script>
+</body>
+</html>
