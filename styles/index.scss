@@ -1,0 +1,224 @@
+$cyan: hsl(172, 67%, 45%);
+$veryDarkCyan: hsl(183, 100%, 15%);
+$darkGrayishCyan: hsl(186, 14%, 43%);
+$darkGrayishCyanLightened: hsl(184, 14%, 56%);
+$lightGrayishCyanDarkened: hsl(185, 41%, 84%);
+$inactive: hsl(184,57%,27%);
+$lightGrayishCyan: hsl(189, 41%, 97%);
+$white: hsl(0, 0%, 100%);
+$fontSize: 24px;
+$fontFamily: 'Space Mono', monospace;
+$fontWeightLight: 400;
+$fontWeightStrong: 700;
+
+body {
+  margin: 0;
+  padding: 15vh 0;
+  font-family: $fontFamily;
+  background-color: $lightGrayishCyanDarkened;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}
+#title {
+  font-size: 1.5em;
+  color: $veryDarkCyan;
+  letter-spacing: .5em;
+}
+#app {
+  width: 50vw;
+  background: $white;
+  margin-top: 3em;
+  padding: 2em;
+  border-radius: 1em;
+  @media (max-width: 1400px) {
+    width: calc(75vw - 4em);
+  }
+  @media (max-width: 1024px) {
+    width: calc(90vw - 4em);
+  }
+  @media (max-width: 768px) {
+    width: calc(100vw - 4em);
+    border-radius: 1em 1em 0 0;
+  }
+  p {
+    color: $veryDarkCyan;
+  }
+  .field {
+    width: 100%;
+    label {
+      display: block;
+      color: $veryDarkCyan;
+      &.hidden {
+        display: none;
+      }
+    }
+    input {
+      display: inline-block;
+      width: calc(100% - 2em);
+      padding: .5em;
+      border: 2px solid transparent;
+      background: $lightGrayishCyan;
+      border-radius: 3px;
+      color: $darkGrayishCyan;
+      font-family: $fontFamily;
+      text-align: right;
+      font-size: 24px;
+      &[name="bill"] {
+        background-image: url(../images/icon-dollar.svg);
+        background-repeat: no-repeat;
+        background-size: 1em;
+        background-position: 1em center;
+      }
+      &[name="people"] {
+        background-image: url(../images/icon-person.svg);
+        background-repeat: no-repeat;
+        background-size: 1em;
+        background-position: 1em center;
+      }
+      &[name="custom_tip"] {
+        height: calc(100% - 1em);
+        width: calc(100% - .5em);
+        padding-right: 0;
+      }
+      &:focus,
+      &:focus-visible {
+        border: 2px solid $cyan;
+        outline: none;
+        color: $veryDarkCyan;
+      }
+      &.error {
+        border: 2px solid #b9826e;
+      }
+    }
+  }
+}
+
+.tip_buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: .6em;
+}
+
+.tip {
+  background: $veryDarkCyan;
+  color: $white;
+  text-align: center;
+  border: none;
+  outline: none;
+  padding: .5em 1em;
+  font-family: $fontFamily;
+  font-size: 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  &:hover,
+  &:focus-visible,
+  &.is-active {
+    cursor: pointer;
+    color: $veryDarkCyan;
+    background-color: $cyan;
+  }
+}
+
+#result {
+  background-color: $veryDarkCyan;
+  border-radius: 1em;
+  p {
+    color: $white;
+    small {
+      color: $darkGrayishCyanLightened;
+    }
+  }
+  h1 {
+    color: $cyan;
+  }
+  .container {
+    height: calc(100% - 2em);
+    display: flex;
+    flex-direction: column;
+    .row:nth-of-type(2) {
+      flex-grow: 1;
+    }
+    #reset_row {
+      #reset {
+        height: calc(24px + 1em);
+        width: 100%;
+        color: $white;
+        font-family: $fontFamily;
+        background-color: $inactive;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        font-size: 24px;
+        &:hover,
+        &:focus,
+        &:focus-visible {
+          cursor: pointer;
+          color: $veryDarkCyan;
+          background-color: $cyan;
+        }
+        &.inactive {
+          color: $veryDarkCyan;
+          &:hover {
+            background-color: $inactive;
+            color: $veryDarkCyan;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}
+
+.container {
+  padding: 1em;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  &.collapse {
+    @media (max-width: 768px) {
+      flex-direction: column;
+      >.column,
+      >.column.is-third,
+      >.column.is-half {
+        width: 100%;
+      }
+    }
+  }
+  .column {
+    &.is-third {
+      width: 33.3333333%;
+    }
+    &.is-half {
+      width: 50%;
+    }
+    &.is-full {
+      width: 100%;
+    }
+  }
+}
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+.label,
+label {
+  span {
+    color: red;
+    float: right;
+  }
+}
+#hint_text {
+  color: red;
+  text-align: center;
+}
